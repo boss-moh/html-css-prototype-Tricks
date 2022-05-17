@@ -1,0 +1,1259 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    height: 1000px;
+    --frist-color: #9c27b0;
+    --second-color: #03a9f4;
+    --thrid-color : #35e9ff 
+}
+
+
+.page {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    background-color: rgb(14 24 60);
+    margin: 20px auto;
+}
+
+.big-page {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    background-color: rgb(14 24 60);
+    margin: 20px auto;
+}
+
+
+
+.prototype-1 {
+    background: black
+}
+.prototype-1 div {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 35px;
+    text-transform: uppercase;
+    position: absolute;
+    border: 5px solid #333;
+    padding: 10px 20px;
+    --width : 210px ;
+    width: var(--width);
+}
+
+.prototype-1 div::after {
+    content: "";
+    position: absolute;
+    width: 20%;
+    height: 100%;
+    background: transparent;
+    top: 0px;
+    left: 0px;
+    backdrop-filter: invert(1);
+    animation: prototype-1 2s 0s linear 6 alternate,
+                prototype-1-full 2s 10s linear 1 forwards;
+}
+
+@keyframes prototype-1 {
+    100% {
+        left: calc(var(--width) - 20% - 5px);
+    }
+}
+
+@keyframes prototype-1-full {
+    100% {
+        width: 100%;
+    }
+}
+
+
+/* .prototype-2 */
+
+.prototype-2 .num {
+    width: 200px;
+    height: 250px;
+    background-color: rgb(14 24 60);
+    font-size: 64px;
+    font-family: cursive;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.prototype-2  .num::after {
+    content: "";
+    position: absolute;
+    background: linear-gradient(-50deg,var(--second-color),rgb(14 24 60), var(--frist-color));
+    inset: 0px;
+    transform: skew(3deg, 3deg);
+    z-index: -1;
+    opacity: 0;
+    transition: 1s;
+}
+
+.prototype-2  .num::before {
+    content: "";
+    position: absolute;
+    background: linear-gradient(-50deg,var(--second-color),rgb(14 24 60), var(--frist-color));
+    inset: 0px;
+    filter: blur(15px);
+    transform: skew(3deg, 3deg);
+    z-index: -1;
+    opacity: 0;
+    transition: 1s;
+
+}
+
+.prototype-2  .num:hover::after,
+.prototype-2  .num:hover::before {
+    opacity: 1;
+    inset: -4px;
+}
+
+.prototype-2  .num:hover {
+    border-color : rgb(14 24 60)
+}
+
+.prototype-2  .num {
+    border: 2px solid white;
+    transition: 1s;
+}
+
+.prototype-2 span {
+    background-color: rgb(14 24 60);
+    display: block;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* prototype-3  */
+
+.prototype-3  .box {
+    background: #333;
+    color: var(--thrid-color);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition : 1s ;
+    overflow: hidden;
+}
+
+.prototype-3  .box:hover {
+    background : var(--thrid-color);
+    color: #333;
+    box-shadow: 0px 0px 10px var(--thrid-color),0px 0px 53px var(--thrid-color),0px 0px 100px var(--thrid-color);
+
+}
+
+.prototype-3  .box:hover span:not(.content) {
+    opacity: 0;
+}
+
+
+.prototype-3  span.content {
+    font-size: 30px;
+    text-transform: uppercase;
+    font-family: fantasy;
+    letter-spacing: 5px;
+}
+
+.prototype-3  span {
+    position: absolute;
+    --delay :  0.5s;
+}
+.prototype-3  .box span:not(.content) {
+    transition : 1s
+
+}
+
+.prototype-3  span.one {
+    width: 100%;
+    height: 10px;
+    top: 0px;
+    left: -100%;
+    background: linear-gradient(270deg, var(--thrid-color), transparent);
+    animation-name: border-top;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-delay: calc(var(--delay) * 1);
+}
+
+.prototype-3  span.two {
+    width: 10px;
+    height: 100%;
+    right: 0px;
+    top: -100%;
+    background: linear-gradient(0deg, var(--thrid-color), transparent);
+    animation-name: border-right;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-delay: calc(var(--delay) * 2);
+    animation-timing-function: linear;
+}
+
+.prototype-3  span.three {
+    width: 100%;
+    height: 10px;
+    bottom: 0px;
+    right: -100%;
+    background: linear-gradient(90deg, var(--thrid-color), transparent);
+    animation-name: border-bottom;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-delay: calc(var(--delay) * 3);
+    animation-timing-function: linear;
+
+}
+
+.prototype-3  span.four {
+    width: 10px;
+    height: 100%;
+    left: 0px;
+    bottom: -100%;
+    background: linear-gradient(180deg, var(--thrid-color), transparent);
+    animation-name: border-left;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-delay: calc(var(--delay) * 4);
+    animation-timing-function: linear;
+
+}
+
+@keyframes border-top {
+    0% {
+
+    }
+    50%,100% {
+        left: 100%;
+    }
+}
+
+@keyframes border-left {
+    0% {
+        
+    }
+    50%,100% {
+        bottom: 100%;
+    }
+}
+
+@keyframes border-bottom {
+    0% {
+        
+    }
+    50%,100% {
+        right: 100%;
+    }
+}
+
+@keyframes border-right {
+    0% {
+        
+    }
+    50%,100% {
+        top: 100%;
+    }
+}
+
+
+
+/* prototype-4  */
+.prototype-4   {
+    perspective: 1600px;
+
+}
+.prototype-4   .box {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    animation-name: rotate-prototype-4  ;
+    animation-iteration-count: infinite;
+    animation-duration: 4s;
+    transform-style: preserve-3d;
+    transform:  translate(-50%, -50%)
+}
+
+.prototype-4   .box .face {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border: 5px solid white;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: white;
+}
+
+.prototype-4   .box .face.top {
+    background-color: #EC407A;
+    transform: rotateX(90deg) translatey(100px);
+    top: -100px;
+}
+
+.prototype-4   .box .face.bottom {
+    background-color: #00BCD4;
+    transform: rotateX(-90deg) translatey(-100px);
+    bottom: -100px;
+}
+
+.prototype-4   .box .face.left {
+    background-color: #FFC107;
+    transform: rotateY(90deg) translatez(100px) translateX(-100px);
+}
+
+.prototype-4   .box .face.right {
+    background-color: #8BC34A;
+    transform: rotateY(-90deg) translateZ(100px) translateX(100px);
+}
+
+.prototype-4   .box .face.center {
+    background-color: #607D8B;
+    transform: translatez(200px);
+}
+
+.prototype-4   .box .face.back {
+    background-color: #795548;
+    transform: rotateY(180deg) rotate(180deg);
+
+}
+
+@keyframes rotate-prototype-4   {
+    0% {}
+    20% {
+        transform:  translate(-50%, -50%) rotate3d(1,1,1 ,45deg) ;
+    }
+    40% {
+        transform:  translate(-50%, -50%) rotate3d(1,1,1 ,-45deg) ;
+    }
+    60% {
+        transform:  translate(-50%, -50%) rotate3d(1,0,0 ,45deg) ;
+    }
+    80% {
+        transform:  translate(-50%, -50%) rotate3d(1,0,0 ,145deg) ;
+    }
+}
+
+
+/* prototype-5  */
+
+.prototype-5  .container {
+    position: relative;
+    --color : #fdd835  ;
+    color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,50%);
+    width: fit-content;
+    -webkit-box-reflect :below 10px linear-gradient(transparent,#3333)
+
+}
+
+.prototype-5  a {
+    padding: 20px 30px;
+    color: inherit;
+    border: 5px solid var(--color);
+    text-decoration: none;
+    font-size: 30px;
+}
+
+.prototype-5  span {
+    position: absolute;
+    width: 30px;
+    height: 2px;
+    top: 50%;
+    background: var(--color);
+    z-index: -1;
+    transition: 1s;
+
+}
+
+.prototype-5  span.one {
+    top : calc(50% - 10px)
+}
+
+.prototype-5  span.left.two {
+    transform: translate(-70%, -50%);
+}
+
+.prototype-5  span.three {
+    top : calc(50% + 10px)
+
+}
+
+.prototype-5  span.left {
+    transform: translate(-50%, -50%);
+    left: 0px;
+
+}
+
+.prototype-5  span.right {
+    transform: translate(50%, -50%);
+    right: 0px;
+
+}
+.prototype-5  span.right.two {
+    transform: translate(70%, -50%);
+}
+
+
+.prototype-5  a:hover  span.left {
+    transform: translateX(0%);
+        width: 100%;
+}
+
+
+
+
+.prototype-5  a:hover  span.right {
+    transform: translateX(0%);
+        width: 100%;
+}
+
+
+
+.prototype-5  a div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: var(--color);
+    width: 0px;
+    height: 0px;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    display: inline-block;
+}
+
+@keyframes prototype-5-back {
+    100%{
+        width: 100%;
+        height: 220%;
+    }
+}
+
+
+.prototype-5  a:hover div {
+    animation: prototype-5-back 1s 1s forwards;
+
+}
+
+
+.prototype-5  a:hover {
+    animation: prototype-5-a 1s 1.5s forwards;
+}
+@keyframes prototype-5-a {
+    100% {
+        color : black ;
+        box-shadow: 0px 0px 5px var(--color) ,
+                    0px 0px 25px var(--color),
+                    0px 0px 50px var(--color);
+    }
+}
+
+
+/* prototype-6  */
+
+.prototype-6  form {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    font-size: 30px;
+    color: white;
+    align-items: center;
+}
+
+
+.prototype-6  form div {
+    margin: 10px 0px;
+    position: relative;
+}
+.prototype-6  form div label {
+    position: relative;
+    --color : white ;
+    color: var(--color);
+    transition: 1s;
+
+}
+.prototype-6  form div label::after , 
+.prototype-6  form div label::before {
+    content: "";
+    position: absolute;
+} 
+.prototype-6  form div  input:checked ~ label {
+    --color : #00b0ff ;
+}
+
+.prototype-6  form div   label::after  {
+    background: var(--color);
+    width: 18px;
+    height: 18px;
+    top: 50%;
+    transform: translate(-483%, -50%);
+    opacity: 0;
+    transition: 1s;
+}
+.prototype-6  form div   label.special:after {
+    clip-path :polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    width: 25px;
+    height: 25px;
+    transform: translate(-362%, -50%);
+
+}
+.prototype-6  form div  label:hover:after {
+    opacity: 0.2;
+}
+.prototype-6  form div  input:checked ~ label::after  {
+    opacity: 1;
+
+}
+
+.prototype-6  form div label::before {
+    border: 3px solid var(--color);
+    width: 25px;
+    height: 25px;
+    top: 50%;
+    transform: translate(-130%, -50%);
+}
+
+
+.prototype-6  form input {
+    display: none;
+}
+
+
+/* prototype-7  */
+
+
+
+.prototype-7  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.prototype-7  .ball {
+    background: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin: 0px 20px;
+    animation: 3s calc(0.5s * var(--i)) infinite prototype-7-up-down;
+}
+
+
+@keyframes prototype-7-up-down {
+    50% {
+        transform: translatey(50px) scale(1.25);
+        background: #4fc3f7;
+    }
+    0%,100% {
+        transform: translatey(0px);
+        background: white;
+    }
+}
+
+/* prototype-8  */
+
+.prototype-8 .box {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: #ffffff36;
+    backdrop-filter: blur(15px);
+    z-index: 10;
+}
+
+
+.prototype-8 .circle {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: #00b0ff;
+    border-radius: 50%;
+    animation: prototype-8 3s -1.5s infinite linear;
+    top: 5%;
+    left: 85%;
+
+}
+.prototype-8 .Rect {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: #e91e63;
+    top: 5%;
+    left: 85%;
+    animation: prototype-8 3s 0s infinite linear 
+}
+
+
+@keyframes prototype-8 {
+
+    50% {
+        top: 75%;
+        left: -10%;
+    }
+    51% {
+
+    }
+    100% {
+        z-index: 20;
+        top: 5%;
+        left: 85%;
+    }
+}
+
+
+/* prototype-9  */
+
+
+.prototype-9 span {
+    position: absolute;
+    padding: 10px 20px;
+    background: #e91e63;
+    color: white;
+    font-size: 30px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 0px 14px 0px 30px;
+}
+
+
+.prototype-9 span::before {
+    content: "show tool tib";
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    width: 160px;
+    padding: 10px;
+    background: #e91e63;
+    color: white;
+    border-radius: 16px;
+    transform: translate(-50%, -140%);
+    opacity: 0;
+    transition: 1s;
+    z-index: 20;
+    pointer-events: none;
+
+}
+
+.prototype-9 span::after {
+    content: "";
+    position: absolute;
+    border: 20px solid #e91e63;
+    border-color: #fff transparent transparent;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -123%);
+    opacity: 0;
+    transition: 1s;
+    z-index: 10;
+    pointer-events: none;
+}
+
+
+.prototype-9 span:hover::after,
+.prototype-9 span:hover::before {
+    opacity : 1
+
+}
+
+@keyframes prototype-9-show {
+    1% {
+    display: block
+    }
+    100%{
+        display: block;
+        opacity : 1
+    }
+}
+
+
+/* prototype-10  */
+
+
+.prototype-10 .container {
+    width: fit-content;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50% ;
+    transform: translate(-50%,-50%)
+}
+.prototype-10 span {
+    width: 150px;
+    height: 15px;
+    background: white;
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+    cursor: pointer;
+    transition: 1s;
+}
+
+
+.prototype-10 span:nth-child(1) {
+    top : calc(50% - 30px)
+}
+
+.prototype-10 span:nth-child(2) {
+    top : 50%
+
+}
+
+.prototype-10 span:nth-child(3) {
+    top : calc(50% + 30px)
+
+}
+
+.prototype-10 .container:hover span:nth-child(1) {
+    background: rgb(219, 16, 16);
+    transform: translate(-50%,30px) rotate(45deg);
+}
+
+.prototype-10 .container:hover span:nth-child(2) {
+    opacity: 0;
+}
+
+.prototype-10 .container:hover span:nth-child(3) {
+    background: rgb(219, 16, 16);
+    transform: translate(-50%,-30px) rotate(-45deg);
+
+}
+
+
+/* prototype-11  */
+
+
+.prototype-11 {
+    background: #eee;
+}
+
+.prototype-11 span {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: block;
+    border-radius: 50%;
+    border: 5px solid lightseagreen;
+    border-style: dotted solid;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation : prototype-11 2s 0s infinite linear forwards 
+}
+
+.prototype-11 span::after {
+    content: "";
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 5px solid lightseagreen;
+    border-style: solid dotted ;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation : prototype-11 1s 0s infinite linear reverse 
+
+}
+
+@keyframes prototype-11 {
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+
+
+/* prototype-12  */
+
+
+
+.prototype-12 {
+    
+    background: #000;
+    isolation: isolate; 
+     /* * Without isolation, the background color will be taken into account */ 
+}
+
+.prototype-12 .circle {
+    width: 100px;
+    height: 100px;
+    background :var(--frist-color);
+    position: absolute;
+    border-radius : 50%;
+    mix-blend-mode: screen;
+}
+
+.prototype-12 .circle.one {
+    top: 50%;
+    left: 50%;
+    transform: translate(-25%, -25%);
+    background: blue;
+}
+.prototype-12 .circle.two {
+    top: 50%;
+    left: 50%;
+    transform: translate(-75%, -25%);
+    background: green;
+}
+.prototype-12 .circle.three {
+    top: 50%;
+    left: 50%;
+    transform: translate( -45%,-75%);
+    background: red;
+}
+
+
+/* prototype-13  */
+
+
+.prototype-13 {
+    background: #eee;
+}
+
+
+.prototype-13 .one {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: fit-content;
+    position: relative;
+
+    text-transform: uppercase;
+    font-size: 70px;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+
+    -webkit-text-fill-color: #ccc;
+    -webkit-text-stroke : 1px #333
+}
+
+
+.prototype-13 .one::after {
+    content: attr(data);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 0px;
+    overflow: hidden;
+
+    -webkit-text-fill-color: #F44336;
+    -webkit-text-stroke : 1px #333 ;
+
+    transition: 1s;
+}
+
+.prototype-13 .one:hover::after {
+    width: 100%;
+}
+
+
+
+/* prototype-13  */
+
+
+.prototype-14 {
+    width: 850px;
+    background-color: #eee;
+}
+
+.prototype-14 .box {
+        position: relative;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 400px;
+    left: 50%;
+    background: linear-gradient(to right, rgb(254, 240, 138), rgb(251, 207, 232), rgb(244, 114, 182));
+    border-radius: 10px;
+
+}
+.prototype-14 .box .content{
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    font-size: 20px;
+    word-break: break-all;
+    text-align: center;
+}
+.prototype-14 .box .content h2{
+    line-height: 2;
+    margin-bottom: 10px;
+    color: #333;
+    text-transform: uppercase;
+}
+.prototype-14 .box .content a{
+    margin-top: 10px;
+    display: block;
+    padding: 10px;
+    background: #e91e63;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.prototype-14 .box .content p{
+    
+    line-height: 1.5;
+    color: #777;
+}
+.prototype-14 .box .layer{
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    flex-flow: column;
+    justify-content: space-evenly;
+    font-size: 50px;
+    transition: 1s;
+    background: #ffffff70;
+    border-radius: 10px;
+    transition-timing-function: ease-in-out;
+}
+
+.prototype-14 .box .layer i {
+    font-size: inherit;
+    color: lightseagreen;
+}
+
+.prototype-14 .box .layer h2 {
+    text-transform: uppercase;
+    color: #333;
+    font-size: inherit;
+    margin-bottom: -34px;
+}
+
+
+.prototype-14 .box:hover .layer{
+    height: 160px;
+    transform: translate(-240%, -50%);
+    width: 130px;
+    font-size: 30px;
+    top: 50%;
+}
+.prototype-14 .box:hover .layer h2{
+    display: none;
+}
+
+/* prototype-15  */
+
+
+.prototype-15 {
+    background-color: #eee;
+    width: 500px;
+    transform: scale(2.5);
+    margin-top: 360px;
+}
+
+.prototype-15 .container {
+    position: relative;
+    height: 100%;
+}
+
+.prototype-15 .container .tree{
+    position: absolute;
+    --color : #689f38 ;
+    z-index: 20;
+}
+
+.prototype-15 .container .tree .paper{
+    background: var(--color);
+    width: 100px;
+    height: 160px;
+    clip-path: ellipse(39% 50% );
+}
+
+.prototype-15 .container .tree::after ,
+.prototype-15 .container .tree::before {
+    content: "";
+    position: absolute;
+    border: 16px solid var(--color);
+}
+
+.prototype-15 .container .tree::before{
+    left: 50%;
+    border-color: transparent transparent var(--color) ;
+    transform: translate(-50%, -25px);
+}
+
+.prototype-15 .container .tree::after {
+    left: 50%;
+    border-color: var(--color) transparent transparent;
+    transform: translate(-50%, -7px);
+    top: 160px;
+    z-index: 1;
+}
+
+
+
+.prototype-15 .container .tree .root{
+    width: 7px;
+    height: 100px;
+    background-color: #795548;
+    position: relative;
+    bottom: 0px;
+    left: 50%;
+    transform: translate(-50%,-20px);
+    z-index: 2;
+}
+
+.prototype-15 .tree {
+    bottom: 0px;
+    right: -10px;
+}
+.prototype-15 .tree.small {
+    bottom: -23px;
+    right: 32px;
+    transform: scale(0.8);
+    --color: #81c784;
+    z-index: 30;
+}
+
+.prototype-15 .container .room {
+    position: absolute ;
+    background: #bdbdbd;
+    width: 100px;
+    height: 120px;
+    --color : #bdbdbd
+}
+
+.prototype-15 .container .room::after {
+    content: "";
+    position: absolute;
+    background: var(--color);
+    width: 70px;
+    height: 70px;
+    transform: translate(-50%, -50%) rotate(45deg);
+    left: 50%;
+    border-top: 3px solid;
+    border-left: 3px solid;
+}
+
+.prototype-15 .container  .half-circle {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    background: linear-gradient(180deg, transparent 92%, white 90%) ,
+                linear-gradient(90deg, transparent 92%, white 90%);
+    background-size: 10px 10px;
+    z-index: 5;
+    left: 50%;
+    transform: translate(-50%, 0px) scale(0.8);
+    border: 3px solid;
+    background-color: #546e7a;
+    border-top-left-radius: 50px 70px;
+    border-top-right-radius: 50px 70px;
+}
+.prototype-15 .container  .rect {
+    width: 70px;
+    height: 50px;
+    position: absolute;
+    background: linear-gradient(180deg, transparent 92%, white 90%) , 
+                linear-gradient(90deg, transparent 92%, white 90%);
+    background-size: 10px 10px;
+    z-index: 5;
+    left: 50%;
+    transform: translate(-50%, 0px) scale(0.8);
+    border: 3px solid;
+    background-color: #546e7a;
+}
+
+
+.prototype-15 .container  .double-border {
+    position: absolute;
+    width: 100%;
+    height: 10px;
+    border-top: 4px solid #009688;
+    z-index: 5;
+    border-bottom: 4px solid #009688;
+}
+
+.prototype-15 .container .small-room {
+    bottom: 20px;
+    left: 28px;
+    z-index: 20;
+}
+
+.prototype-15 .container .small-room .half-circle {
+    top: -28px;
+
+}
+
+.prototype-15 .container .small-room .rect {
+    bottom: 10px;
+}
+
+.prototype-15 .container .small-room .double-border {
+    top: 45px;
+}
+
+.prototype-15 .home {
+    position: absolute;
+    bottom: 20px;
+    background: red;
+    width: 310px;
+    height: 200px;
+    left: 23%
+}
+
+.prototype-15 .content {
+    background: #ccc;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.prototype-15 .roof {
+    position: absolute;
+    background: lightseagreen;
+    width: 100%;
+    height: 81px;
+    z-index: 1;
+    transform: perspective(135px) rotateX(20deg) scale(1.2) translatey(-99%);
+}
+
+.prototype-15 .shadow {
+    position: absolute;
+    width: 100%;
+    background: #726e6e;
+    height: 5px;
+    z-index: 2;
+}
+.prototype-15 .content .room {
+    z-index: 20;
+    left: 50%;
+    bottom: 0px;
+    transform: translatex(-50%);
+    height: 150px;
+    width: 120px;
+}
+
+.prototype-15 .content .room::after {
+    
+    width: 85px;
+    height: 85px;
+
+}
+
+
+.prototype-15 .content .room .double-border {
+    top: 50%;
+    transform: translateY(-130%);
+}
+
+.prototype-15 .content .left {
+    background: #d2d2d2;
+    width: 32%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.prototype-15 .content .left .double-border {
+    top: 50%;
+    transform: translateY(100%);
+}
+.prototype-15 .content .right {
+    background: #d2d2d2;
+    width: 32%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.prototype-15 .content .right .double-border {
+    top: 50%;
+    transform: translateY(100%);
+}
+
+.prototype-15 .content .right .rect ,
+.prototype-15 .content .left .rect {
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+}
+.prototype-15 .content .right .half-circle ,
+.prototype-15 .content .left .half-circle {
+    top: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+}
+
+.prototype-15 .content .room .rect:not(.last) {
+    width: 30px;
+    height: 30px;
+    bottom: 25px;
+    left: 25px;
+}
+.prototype-15 .content .room .rect.last {
+    width: 30px;
+    height: 30px;
+    bottom: 25px;
+    left: 100px;
+}
+.prototype-15 .content .room .half-circle {
+    
+    top: -20px;
+    width: 120px;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    
+    
+}
+
+.prototype-15 .test {
+    background: #9e6e5c;
+    width: 50px;
+    height: 70px;
+    position: absolute;
+    background-size: 10px 10px;
+    z-index: 5;
+    transform: translate(-50%, 0px) scale(0.8);
+    border: 3px solid;
+    border-top-left-radius: 50px 70px;
+    border-top-right-radius: 50px 70px;
+    bottom: 0;
+    left: 63px;
+}
+
